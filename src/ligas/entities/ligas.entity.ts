@@ -6,19 +6,31 @@ export type LigasDocument = Ligas & Document;
 
 @Schema()
 export class Ligas {
-  @Prop()
+  @Prop({ required: true })
   nameLiga: string;
 
-  @Prop()
+  @Prop({ required: true })
   copa: boolean;
 
-  @Prop()
+  @Prop({ required: true })
   publica: boolean;
 
-  @Prop()
+  @Prop({ required: true })
   valorEntrada: number;
 
-  @Prop({ type: [{ type: SchemaM.Types.ObjectId, ref: 'Usuario' }] })
+  @Prop({ required: true })
+  descricao: string;
+
+  @Prop()
+  dataCriaao: Date;
+
+  @Prop()
+  donoLiga: Usuario;
+
+  @Prop({
+    type: [{ type: SchemaM.Types.ObjectId, ref: 'Usuario' }],
+    required: true,
+  })
   usuarios: Array<Usuario>;
 }
 

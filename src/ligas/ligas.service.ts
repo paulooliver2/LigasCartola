@@ -21,7 +21,9 @@ export class LigasService {
   }
 
   findOne(id: string) {
-    return this.ligaModel.findOne({ id: +id });
+    return this.ligaModel.findOne({ id: +id }).populate({
+      path: 'Usuario',
+    });
   }
 
   update(id: string, updateLigasDto: UpdateLigasDto) {
